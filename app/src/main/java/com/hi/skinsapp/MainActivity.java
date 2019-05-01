@@ -3,11 +3,11 @@ package com.hi.skinsapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 
@@ -17,12 +17,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         setContentView(R.layout.activity_main);
 
         mToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+       // setSupportActionBar(mToolbar);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);//удалить?
+        //super.onCreateOptionsMenu(menu);//удалить?
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         //MenuItem searchItem = menu.findItem(R.id.action_search);
         //SearchView searchView = (SearchView) searchItem.getActionView();
@@ -32,11 +32,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         return true;
     }
 
-    private void setSupportActionBar(Toolbar toolbar) {
+  /*  private void setSupportActionBar(Toolbar toolbar) {
 
-    }
+    }*/
 
-    @Override
+   /* @Override
     public boolean onQueryTextSubmit(String s) {
         return false;
     }
@@ -44,5 +44,5 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public boolean onQueryTextChange(String s) {
         return false;
-    }
+    }*/
 }
