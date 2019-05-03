@@ -15,7 +15,7 @@
 
         <ImageView
             android:id="@+id/skinImage"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="160dp"
             android:scaleType="centerCrop"/>
 
@@ -28,11 +28,20 @@
             <TextView
                 android:id="@+id/numberText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <ImageView
-                android:id="@+id/downloadImage"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorText"/>
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@color/colorBackground">
+                <ImageView
+                    android:id="@+id/downloadImage"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/download_icon"/>
+            </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>

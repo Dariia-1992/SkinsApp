@@ -1,5 +1,6 @@
 package com.hi.skinsapp;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +24,6 @@ import java.io.InputStream;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private ImageView mImageView;
     private AssetManager mManager;
     private RelativeLayout mLayout;
     private RecyclerView mRecyclerView;
@@ -33,14 +34,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mToolbar = findViewById(R.id.toolbar);
-        mImageView = findViewById(R.id.skinImage);
         mLayout= findViewById(R.id.itemLayout);
         mRecyclerView = findViewById(R.id.recyclerView);
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         mManager = getAssets();
-        SkinsAdapter adapter = new SkinsAdapter(listImage(), mManager);
+        SkinsAdapter adapter = new SkinsAdapter(listImage(), mManager, mItemSelected);
         mRecyclerView.setAdapter(adapter);
-
 
         setSupportActionBar(mToolbar);
     }
@@ -66,24 +66,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-   /* public void listOfSkinsImage(){
-       try{
-           paths = mManager.list("skins_image");
-           for (int i = 0; i < paths.length; i++){
-               InputStream is = mManager.open("skins_image/" + paths[i]);
-               Log.d("loading image", paths[i]);
-               Bitmap bitmap = BitmapFactory.decodeStream(is);
-
-               mImageView = new ImageView(this);
-               mImageView.setImageBitmap(bitmap);
-               RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-               mImageView.setLayoutParams(params);
-               mLayout.addView(mImageView);
-           }
-       }
-       catch (IOException e){
-           Log.e("loading image", e.getMessage());
-           return;
-       }
-    }*/
+    private final SkinsAdapter.OnItemSelected mItemSelected = new SkinsAdapter.OnItemSelected() {
+        @Override
+        public void onItemSlected(int position) {
+            Intent intent = new Intent(MainActivity.this, SkinActivity.class);
+            intent.putExtra(SkinActivity.EXTRA_POSITION, position);
+            startActivity(intent);
+        }
+    };
 }
