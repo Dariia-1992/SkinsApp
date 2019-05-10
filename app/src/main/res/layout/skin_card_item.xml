@@ -1,49 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="120dp"
-    android:layout_height="190dp"
-    xmlns:cardView="http://schemas.android.com/apk/res-auto"
-    cardView:cardCornerRadius="4dp"
-    android:layout_margin="5dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_shape">
 
     <RelativeLayout
         android:id="@+id/itemLayout"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/skinImage"
-            android:layout_width="wrap_content"
-            android:layout_height="160dp"
-            android:scaleType="centerCrop"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            android:paddingRight="8dp"/>
+
+        <RelativeLayout
+            android:id="@+id/downloadContainer"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/skinImage"
+            android:layout_alignRight="@id/skinImage"
+            android:background="@color/colorBackground">
+            <ImageView
+                android:id="@+id/downloadImage"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/download_icon"/>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/toolMenu"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:layout_below="@id/skinImage"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary"
+            android:layout_toLeftOf="@id/downloadContainer"
+            android:layout_alignLeft="@id/skinImage">
             <TextView
                 android:id="@+id/numberText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textColor="@color/colorText"/>
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:background="@color/colorBackground">
-                <ImageView
-                    android:id="@+id/downloadImage"
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/download_icon"/>
-            </RelativeLayout>
+                android:paddingLeft="10dp"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"/>
+
         </RelativeLayout>
 
     </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+</RelativeLayout>

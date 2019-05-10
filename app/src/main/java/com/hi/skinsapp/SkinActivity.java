@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebView;
 
 public class SkinActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "position";
+    private WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +22,9 @@ public class SkinActivity extends AppCompatActivity {
             finish();
             return;
         }
+
+        mWebView = findViewById(R.id.web_view);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.loadUrl("file:///android_asset/skins_image/0.png");
     }
 }
