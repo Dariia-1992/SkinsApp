@@ -26,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbar);
         mLayout= findViewById(R.id.itemLayout);
         mRecyclerView = findViewById(R.id.recyclerView);
+        
+        GridAutofitLayoutManager manager = new GridAutofitLayoutManager(this, getResources().getDimensionPixelSize(R.dimen.activity_column_width));
+        mRecyclerView.setLayoutManager(manager);
 
-        mRecyclerView.setHasFixedSize(true);
         mManager = getAssets();
         SkinsAdapter adapter = new SkinsAdapter(listImage(), mManager, mItemSelected);
         mRecyclerView.setAdapter(adapter);
