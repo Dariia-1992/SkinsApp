@@ -8,8 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbar);
         mLayout= findViewById(R.id.itemLayout);
         mRecyclerView = findViewById(R.id.recyclerView);
-        
+
         GridAutofitLayoutManager manager = new GridAutofitLayoutManager(this, getResources().getDimensionPixelSize(R.dimen.activity_column_width));
         mRecyclerView.setLayoutManager(manager);
 
@@ -39,7 +45,20 @@ public class MainActivity extends AppCompatActivity {
 
     public String[] listImage(){
         try{
-            return mManager.list("thumb");
+            String [] list = mManager.list("thumb");
+            String [] sortlist = new String[list.length];
+            ArrayList<Integer> arrayList = new ArrayList<>();
+            for (String num : list){
+                String [] number = num.split(".png");
+                arrayList.add(Integer.parseInt(number[0]));
+            }
+
+            Collections.sort(arrayList);
+
+            for (int i = 0; i< arrayList.size(); i++){
+                sortlist[i] = arrayList.get(i) + ".png";
+            }
+            return sortlist;
         }
         catch (IOException e){
          return new String[0];
@@ -50,11 +69,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         //super.onCreateOptionsMenu(menu);//удалить?
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        //MenuItem searchItem = menu.findItem(R.id.action_search);
-        //SearchView searchView = (SearchView) searchItem.getActionView();
-        //searchView.setQueryHint("Search");
-        ///searchView.setOnQueryTextListener(this);
-        //searchView.setIconified(false);
         return true;
     }
 
