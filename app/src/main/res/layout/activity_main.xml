@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize" />
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="@color/colorText"/>
 
     <ImageView
         android:id="@+id/image_background"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/activity_height"
         android:background="@drawable/native_skins_background"
         android:layout_below="@id/toolbar"/>
     <RelativeLayout
@@ -33,7 +34,9 @@
                 android:id="@+id/recyclerView"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                >
+                android:paddingLeft="@dimen/activity_padding"
+                android:paddingBottom="@dimen/activity_margin">
+
             </android.support.v7.widget.RecyclerView>
 
         </android.support.v4.widget.SwipeRefreshLayout>
